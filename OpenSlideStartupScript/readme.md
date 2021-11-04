@@ -1,9 +1,7 @@
 ## Startup Script for Installing Openslide in a Kernel Instance
 
-https://aws.amazon.com/blogs/machine-learning/customize-amazon-sagemaker-studio-using-lifecycle-configurations/
-
 To set up the startup script which installs openslide for python,
-follow the link above IN DETAIL. 
+follow the link IN DETAIL. [linkyboi](https://aws.amazon.com/blogs/machine-learning/customize-amazon-sagemaker-studio-using-lifecycle-configurations/)
 
 Keep in mind that once you have completed the process for making
 the startup script accessible to any one user (Adin did this
