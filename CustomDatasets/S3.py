@@ -26,6 +26,8 @@ class S3Accessor:
             return self.S3.exists(path)
         else:
             return os.path.exists(path)
+    def list_files(self, filepath):
+        return self.S3.ls(filepath)
     def get_file(self, s3path, localpath=None, force=DEFAULT_FORCE, return_localpath=False):
         if localpath is None: 
             localpath = Paths.LocalImgsDir + os.path.basename(s3path)
