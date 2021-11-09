@@ -35,6 +35,7 @@ class S3Accessor:
             if not force:
                 raise Exception(localpath, "already exists")
         self.S3.get(s3path, localpath)
+        assert (os.path.exists(localpath)), "ruh roh"
         if return_localpath: return localpath
     def put_file(self, localpath, s3path=None, force=DEFAULT_FORCE, return_s3path=False):
         if s3path is None: 

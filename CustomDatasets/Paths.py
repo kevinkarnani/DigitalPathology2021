@@ -4,7 +4,7 @@ import os
 from . import Utils
 
 # These paths are for local storage
-Repo = os.path.expanduser("~/DigitalPathology2021/CustomDatasets")
+Repo = os.path.expanduser("~/DigitalPathology2021/CustomDatasets/")
 #Data = Repo + "data/"
 #All = Data + "all.json"
 #KFolds = Data + "kfolds/"
@@ -17,5 +17,5 @@ if not Repo in __file__:
 #for path in [Data, KFolds]:
 #    utils.create_dir(path)
 
-LocalImgsDir = os.path.expanduser("~/imgs/")
+LocalImgsDir = "/home/sagemaker-user/imgs/"
 Utils.create_dir(LocalImgsDir)
