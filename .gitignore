@@ -2,3 +2,5 @@
 */.ipynb_checkpoints/*
 *.ipynb_checkpoints/*
 CustomDatasets/old/.ipynb_checkpoints/
+
+local_imgs/
