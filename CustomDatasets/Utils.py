@@ -16,7 +16,7 @@ class FileWrapper(io.IOBase):
         self.path = path
         self.mode = mode.lower()
         if self.mode not in FileWrapper.VALID_MODES:
-            raise Exception("Yoo r stoopid")
+            raise ValueError
         self.file = None
     def __enter__(self):
         if self.mode == FileWrapper.MODE_READ:

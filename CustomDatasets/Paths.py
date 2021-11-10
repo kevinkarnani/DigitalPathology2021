@@ -3,19 +3,11 @@ import os
 
 from . import Utils
 
-# These paths are for local storage
+# Ensure correct repo placement
 Repo = os.path.expanduser("~/DigitalPathology2021/CustomDatasets/")
-#Data = Repo + "data/"
-#All = Data + "all.json"
-#KFolds = Data + "kfolds/"
-
-# Ensure correct file structure
 if not Repo in __file__:
     raise Exception("The repo should be cloned into your home directory!")
 
-# Initialize data dirs
-#for path in [Data, KFolds]:
-#    utils.create_dir(path)
-
-LocalImgsDir = "/home/sagemaker-user/imgs/"
+# Ensure local img storage is initiatlized
+LocalImgsDir = "local_imgs/"
 Utils.create_dir(LocalImgsDir)
