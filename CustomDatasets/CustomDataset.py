@@ -30,6 +30,9 @@ class CustomDataset(data.Dataset):
         assert (os.path.exists(local_path)), f"{local_path} doesn't exist"
         img = openslide.OpenSlide(local_path)
         return img
+    def get_img_by_name(self, name):
+        index = self.files.index(name)
+        return self[index]
         
 class TestDataset(CustomDataset):
     def __init__(self, configuration=0):
