@@ -33,6 +33,8 @@ class CustomDataset(data.Dataset):
     def get_img_by_name(self, name):
         index = self.files.index(name)
         return self[index]
+    def delete_cache(self):
+        self.S3.delete_cache(self.files_dir, self.files_ext)
         
 class TestDataset(CustomDataset):
     def __init__(self, configuration=0):

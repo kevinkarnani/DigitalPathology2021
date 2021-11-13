@@ -33,7 +33,7 @@ class S3Accessor:
         if localpath is None: 
             localpath = Paths.LocalImgsDir + os.path.basename(s3path)
         if self.file_exists(localpath, on_s3=False):
-            if force == 0: return
+            if force == 0: return localpath
             elif force == 1: self.S3.get(s3path, localpath)
             elif force == -1: raise Exception(localpath, "already exists")
         else: self.S3.get(s3path, localpath)
@@ -47,3 +47,9 @@ class S3Accessor:
             elif force == -1: raise Exception(s3path, "already exists")
         else: self.S3.put(localpath, s3path)    
         if return_s3path: return s3path
+    def delete_cache(self, s3path, files_ext, localpath=None):
+        if localpath is None: 
+            localpath = Paths.LocalImgsDir + os.path.basename(s3path)
+        for file in os.scandir(localpath):
+            if file.path.endswith(files_ext):
+                os.remove(file.path)
