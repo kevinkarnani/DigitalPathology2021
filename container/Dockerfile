@@ -5,6 +5,10 @@ ENV PATH="/opt/ml/code:${PATH}"
 # /opt/ml and all subdirectories are utilized by SageMaker, we use the /code subdirectory to store our user code.
 COPY /code /opt/ml/code
 
+RUN apt-get update && apt-get install -y build-essential
+RUN apt-get install openslide-tools -y
+RUN pip install openslide-python
+
 # this environment variable is used by the SageMaker PyTorch container to determine our user code directory.
 ENV SAGEMAKER_SUBMIT_DIRECTORY /opt/ml/code
 
