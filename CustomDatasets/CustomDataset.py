@@ -27,12 +27,21 @@ class CustomDataset(data.Dataset):
         img = self.make_openslide_img(local_path)
         return local_path, img
     def make_openslide_img(self, local_path):
+        """
+        local_path : str -> Openslide Image
+        """
         assert (os.path.exists(local_path)), f"{local_path} doesn't exist"
-        img = openslide.OpenSlide(local_path)
-        return img
+        try:
+            img = openslide.OpenSlide(local_path)
+            return img
+        except e:
+            print(str(e))
+            return None    
     def get_img_by_name(self, name):
-        index = self.files.index(name)
-        return self[index]
+        if name in self.files:
+            index = self.files.index(name)
+            return self.files[index]
+        return ""
     def delete_cache(self):
         self.S3.delete_cache(self.files_dir, self.files_ext)
         
