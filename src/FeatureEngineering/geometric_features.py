@@ -8,7 +8,6 @@ class Feature:
     '''
     A base class that highlights all the important classes for feature calculation. 
     '''
-
     def __init__(self, mask):
         self.mask = mask
     def _calculate_feature(self):
