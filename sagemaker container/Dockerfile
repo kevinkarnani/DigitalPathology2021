@@ -7,7 +7,8 @@ COPY /code /opt/ml/code
 
 RUN apt-get update && apt-get install -y build-essential \
     && apt-get install openslide-tools -y \
-    && pip install openslide-python
+    && pip install openslide-python \
+    && pip install boto3 \
 
 # this environment variable is used by the SageMaker PyTorch container to determine our user code directory.
 ENV SAGEMAKER_SUBMIT_DIRECTORY /opt/ml/code
