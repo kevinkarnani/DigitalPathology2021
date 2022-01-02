@@ -3,5 +3,5 @@
 *.ipynb_checkpoints/*
 CustomDatasets/old/.ipynb_checkpoints/
 
-local_imgs/
-FeatureEngineering/testing.ipynb
+FeatureEngineering/local_images/*
+AWSConfig/credentials

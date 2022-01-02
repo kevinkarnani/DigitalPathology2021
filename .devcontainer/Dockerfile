@@ -32,6 +32,9 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
 RUN conda create -n pytorch -y pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch
 RUN conda install gdal -c conda-forge -n pytorch
 RUN conda install poppler matplotlib ipykernel -n pytorch
+RUN conda install -y boto3 -n pytorch
+RUN conda install -c anaconda pandas -n pytorch
+
 # RUN chown vscode -hR /opt
 
 # [Optional] Uncomment this section to install additional OS packages.
