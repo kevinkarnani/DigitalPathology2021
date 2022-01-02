@@ -59,11 +59,11 @@ class Perimeter(Feature):
 
         return count
 
-class Area_Perimeter(Feature):
+class AreaPerimeter(Feature):
     '''
     Calculates the Area to Perimeter ratio by division.
     '''
     def _calculate_feature(self):
-        ar = Area(self.mask)
-        pe = Perimeter(self.mask)
-        return ar()/pe()
+        ar_ = Area(self.mask)
+        pe_ = Perimeter(self.mask)
+        return ar_()/pe_()
