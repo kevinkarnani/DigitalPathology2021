@@ -5,3 +5,4 @@ CustomDatasets/old/.ipynb_checkpoints/
 
 FeatureEngineering/local_images/*
 AWSConfig/credentials
+.vscode
