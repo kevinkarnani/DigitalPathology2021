@@ -20,11 +20,6 @@ RUN apt-get update \
     && apt-get update \
     && apt-get install -y docker-ce-cli
 
-# Install Docker Compose
-RUN LATEST_COMPOSE_VERSION=$(curl -sSL "https://api.github.com/repos/docker/compose/releases/latest" | grep -o -P '(?<="tag_name": ").+(?=")') \
-    && curl -sSL "https://github.com/docker/compose/releases/download/${LATEST_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose \
-    && chmod +x /usr/local/bin/docker-compose
-
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
     && unzip awscliv2.zip \
     && ./aws/install
@@ -32,6 +27,7 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
 RUN conda create -n pytorch -y pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch
 RUN conda install gdal -c conda-forge -n pytorch
 RUN conda install poppler matplotlib ipykernel -n pytorch
+RUN conda install boto3 -n pytorch
 # RUN chown vscode -hR /opt
 
 # [Optional] Uncomment this section to install additional OS packages.

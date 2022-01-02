@@ -10,7 +10,7 @@
 		}
 	},
 	"runArgs": [
-		"--gpus=all",
+		// "--gpus=all",
 		"--init",
 		"--privileged"
 	],
