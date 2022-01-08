@@ -1,4 +1,4 @@
-*/__pycache__/*
+*/__pycache__*
 */.ipynb_checkpoints/*
 *.ipynb_checkpoints/*
 src/CustomDatasets/old/.ipynb_checkpoints/
@@ -7,3 +7,4 @@ src/FeatureEngineering/local_images/*
 AWSConfig/credentials
 .vscode
 testing.ipynb
+feature-engineering-test-files*
