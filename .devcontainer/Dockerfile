@@ -18,7 +18,7 @@ RUN apt-get update \
     && curl -fsSL https://download.docker.com/linux/$(lsb_release -is | tr '[:upper:]' '[:lower:]')/gpg | apt-key add - 2>/dev/null \
     && echo "deb [arch=amd64] https://download.docker.com/linux/$(lsb_release -is | tr '[:upper:]' '[:lower:]') $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list \
     && apt-get update \
-    && apt-get install -y docker-ce-cli
+    && apt-get install -y docker-ce-cli python3-opencv
 
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
     && unzip awscliv2.zip \
@@ -29,6 +29,7 @@ RUN conda install gdal -c conda-forge -n pytorch
 RUN conda install poppler matplotlib ipykernel -n pytorch
 RUN conda install -y boto3 -n pytorch
 RUN conda install -c anaconda pandas -n pytorch
+RUN /opt/conda/envs/pytorch/bin/pip install opencv-python pylint
 
 # RUN chown vscode -hR /opt
 
