@@ -8,10 +8,10 @@ class FeatureManager():
 
     :param image: A 3 channel image of the cell. 
     :param mask_image: A black and white 3 channel image of the mask of the cell.
-    :param features: Optional. A dictionary of features to be calculated.
+    :param feature_dict: Optional. A dictionary of features to be calculated.
 
     Example:
-        features = {
+        feature_dict = {
             "geometric_features":["Area", "Perimeter"]
         }
 
@@ -22,28 +22,24 @@ class FeatureManager():
             - AreaPerimeter
             - InsideRadialContact
     '''
-    def __init__(self, image, mask_image, features=None) -> None:
-        self.features = features
+    def __init__(self, image, mask_image, feature_dict=None) -> None:
+        self.features = feature_dict if feature_dict else self._get_feature_dict(["geometric_features"])
         self.image = image
         self.mask_image = mask_image
     def __call__(self):
+        return self._calculate_features(self.features)
+    def _get_feature_dict(self, feature_types):
         output = {}
-        if not self.features:
-            f = pyclbr.readmodule("geometric_features").keys()
-            gf = importlib.import_module("geometric_features")
-            output["geometric_features"] = {}
-            for feature in f:
+        for feature_type in feature_types:
+            output[feature_type] = pyclbr.readmodule(feature_type).keys()
+        return output
+    def _calculate_features(self, feature_dict):
+        output = {}
+        for feature_type in feature_dict.keys():
+            gf = importlib.import_module(feature_type)
+            output[feature_type] = {}
+            for feature in feature_dict[feature_type]:
                 c = getattr(gf, feature)
                 o = c(mask_image=self.mask_image)
-                output["geometric_features"][feature]=o()
-            return output
-        else:
-            for feature_type in self.features.keys():
-                gf = importlib.import_module(feature_type)
-                output[feature_type] = {}
-                for feature in self.features[feature_type]:
-                    c = getattr(gf, feature)
-                    o = c(mask_image=self.mask_image)
-                    output[feature_type][feature] = o()
-            return output
-            
+                output[feature_type][feature] = o()
+        return output
