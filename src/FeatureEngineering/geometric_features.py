@@ -10,6 +10,7 @@ class Area(feature.Feature):
     '''
     Calculates the Area of the mask by counting cells with value greater than 1.
 
+    :param image: 3 Channel image of the cell.
     :param mask_image: 3 Channel image of the mask.
     :returns: Integer Area of the mask created from the image.
     '''
@@ -22,6 +23,7 @@ class Perimeter(feature.Feature):
     '''
     Calculates the Perimeter of the mask by counting number of neighbors.
 
+    :param image: 3 Channel image of the cell.
     :param mask_image: 3 Channel image of the mask.
     :returns: Integer Perimeter of the mask created from the image.
     '''
@@ -62,12 +64,13 @@ class AreaPerimeter(feature.Feature):
     '''
     Calculates the Area to Perimeter ratio by division.
 
+    :param image: 3 Channel image of the cell.
     :param mask_image: 3 Channel image of the mask.
     :returns: Ratio of Area to Perimeter in decimal format. 
     '''
     def _calculate_feature(self):
-        ar_ = Area(self.mask_image)
-        pe_ = Perimeter(self.mask_image)
+        ar_ = Area(self.image, self.mask_image)
+        pe_ = Perimeter(self.image, self.mask_image)
         return ar_()/pe_()
 
 
@@ -75,6 +78,7 @@ class InsideRadialContact(feature.Feature):
     '''
     Calculates the InsideRadialContact using Euclidean Distance Transform for white pixels.
 
+    :param image: 3 Channel image of the cell.
     :param mask_image: 3 Channel image of the mask.
     :returns: A tuple.
         hist : array

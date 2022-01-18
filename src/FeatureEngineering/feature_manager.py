@@ -23,7 +23,7 @@ class FeatureManager():
             - InsideRadialContact
     '''
     def __init__(self, image, mask_image, feature_dict=None) -> None:
-        self.features = feature_dict if feature_dict else self._get_feature_dict(["geometric_features"])
+        self.features = feature_dict if feature_dict else self._get_feature_dict(["geometric_features", "color_features"])
         self.image = image
         self.mask_image = mask_image
     def __call__(self):
@@ -40,6 +40,6 @@ class FeatureManager():
             output[feature_type] = {}
             for feature in feature_dict[feature_type]:
                 c = getattr(gf, feature)
-                o = c(mask_image=self.mask_image)
+                o = c(mask_image=self.mask_image, image=self.image)
                 output[feature_type][feature] = o()
         return output

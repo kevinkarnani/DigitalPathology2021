@@ -9,11 +9,11 @@ class Feature(abc.ABC):
     :returns: Nothing, abstract class.
     '''
 
-    def __init__(self, mask_image):
+    def __init__(self, image, mask_image):
+        self.image = image
         self.mask_image = mask_image
         self.mask = np.sum(self.mask_image, axis=2)/3
         self.bin_mask = np.where(self.mask > 200, 1, 0)
-
     @abc.abstractmethod
     def _calculate_feature(self):
         pass
