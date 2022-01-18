@@ -21,6 +21,8 @@ class FeatureManager():
             - Perimeter
             - AreaPerimeter
             - InsideRadialContact
+        * color_features:
+            - MeanHSV
     '''
     def __init__(self, image, mask_image, feature_dict=None) -> None:
         self.features = feature_dict if feature_dict else self._get_feature_dict(["geometric_features", "color_features"])
