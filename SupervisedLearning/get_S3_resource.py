@@ -31,15 +31,15 @@ def aws_session(aws_access_key_id, aws_secret_access_key, aws_session_token):
 def get_s3_resource():
     
     AWSConfig_path = os.path.abspath('AWSConfig')
-    print("AWSConfig_path:", AWSConfig_path)
+    # print("AWSConfig_path:", AWSConfig_path)
 
     aws_credentials_path = os.path.join(AWSConfig_path, 'credentials')
-    print("aws_credentials_path", aws_credentials_path)
+    # print("aws_credentials_path", aws_credentials_path)
 
     if aws_credentials_path not in sys.path:
         sys.path.append(aws_credentials_path)
 
-    print("sys path", sys.path)
+    # print("sys path", sys.path)
 
     with open(aws_credentials_path, 'r') as f:
         match = re.split('\n', f.read())
