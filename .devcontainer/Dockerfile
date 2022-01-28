@@ -30,6 +30,7 @@ RUN conda install poppler matplotlib ipykernel -n pytorch
 RUN conda install -y boto3 -n pytorch
 RUN conda install -c anaconda pandas -n pytorch
 RUN /opt/conda/envs/pytorch/bin/pip install opencv-python pylint
+RUN conda install Flask
 
 # RUN chown vscode -hR /opt
 
