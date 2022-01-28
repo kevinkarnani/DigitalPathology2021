@@ -26,3 +26,5 @@ def download_file_from_s3(image_folder, bucket):
         # save_path = os.path.join(f'local_images', image_folder, f'{image}.png')
         # plt.imsave(save_path, ds_array)
     
+if __name__ == '__main__':
+    pass
