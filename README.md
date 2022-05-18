@@ -1,3 +1,7 @@
+# DEPRECATED
+
+Please consider checking out [Digital Pathology](https://github.com/orgs/Digital-Pathology/repositories) to find the fully functional tools and models.
+
 # DigitalPathology2021
 
 This repo has multiple tools, utilities, and sub-projects that the 2021-2022 Digital Pathology team worked on throughout their senior design series. The material in this repo was largely designed for use on AWS Sagemaker.
